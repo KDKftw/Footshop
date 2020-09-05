@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
 
 import utility.Log;
 
@@ -46,6 +47,15 @@ public class Converse {
 		Log.info("Converse shoes are displayed");
 		Thread.sleep(3000);
 		driver.findElement(By.cssSelector("#page-1 > div:nth-child(4) > div.Product_wrapper_HOAyR.Product_light_BLc7O > a > div > div > img")).click();
+		WebElement boty = driver.findElement(By.cssSelector("#template > div:nth-child(10) > div > div.Product_slidesAndInfo_2fGGB > div.ProductProperties_wrapper_1uSY9 > h1"));
+		String nazev = boty.getText();
+		System.out.println(nazev);
+		driver.findElement(By.className("Dropdown_activeItem_LAVaT")).click();
+		driver.findElement(By.xpath("//*[@id=\"template\"]/div[5]/div/div[1]/div[2]/div[4]/div[1]/div[2]/div[2]/div[2]/div/span[2]")).click();
+		driver.findElement(By.xpath("//*[@id=\"template\"]/div[5]/div/div[1]/div[2]/div[5]/button")).click();
+		
+		//Select drpVelikost = new Select (driver.findElement(By.cssSelector("#template > div:nth-child(10) > div > div.Product_slidesAndInfo_2fGGB > div.ProductProperties_wrapper_1uSY9 > div.ProductProperties_productSizes_3oj_u > div.Dropdown_dropdown_3tKJH.ProductSizes_dropdown_dp4Iy.Dropdown_fullWidth_AU3nh.Dropdown_outlined_1--3y > div")));
+		//drpVelikost.deselectByVisibleText("40");
 		
 	}
 	
