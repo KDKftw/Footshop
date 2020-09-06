@@ -18,17 +18,14 @@ public class ConverseTest {
 	PanskeBoty objPanskeBoty;
 	ExactBoty objExactBoty;
 	
-	@Before
-	public void setup() {
-		
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\KDK\\Desktop\\Selenium Setup\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.get("https://www.footshop.cz/cs/");
-		}
 
 	@Test
 	public void pridejConverseDoKosiku() throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\KDK\\Desktop\\Selenium Setup\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		driver.get("https://www.footshop.cz/cs/");
+		
 		objHomepage = new Homepage(driver);
 		objHomepage.clickPanske();
 		objPanskeBoty = new PanskeBoty(driver);

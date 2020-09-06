@@ -9,7 +9,7 @@ public class PanskeBoty {
 
 WebDriver driver;
 
-@FindBy(xpath="/html/body/div[5]/div/div/div[2]/div/div[1]/div[4]/div/div[2]/div[6]/a")
+@FindBy(css="#filter-manufacturer > div > div.AdvancedFeatureContainer_itemsContainer_Jd_G7 > div:nth-child(7) > a")
 WebElement converseCheckbox;
 
 @FindBy(css="#page-1 > div:nth-child(4) > div.Product_wrapper_HOAyR.Product_light_BLc7O > a > div > div > img")
@@ -20,9 +20,10 @@ public PanskeBoty(WebDriver driver) {
 	PageFactory.initElements(driver, this);
 }
 
-public void chooseConverse() {
+public void chooseConverse() throws InterruptedException {
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 	js.executeScript("window.scrollBy(0,500)", "");
+	Thread.sleep(1500);
 	converseCheckbox.click();
 }
 

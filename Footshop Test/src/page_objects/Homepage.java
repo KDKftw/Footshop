@@ -20,6 +20,7 @@ public Homepage(WebDriver driver) {
 }
 
 public void clickPanske() {
+	driver.manage().window().maximize();
 	panske.click();
 	}
 
