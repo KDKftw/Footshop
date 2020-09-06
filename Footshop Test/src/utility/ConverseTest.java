@@ -7,6 +7,9 @@ import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+
 import page_objects.ExactBoty;
 import page_objects.Homepage;
 import page_objects.PanskeBoty;
@@ -37,10 +40,32 @@ public class ConverseTest {
 		objExactBoty.pridatDoKosiku();
 		String nameBasket = objExactBoty.jmenoBotyKosik();
 		assertEquals(nameShoe, nameBasket);
-		
+		driver.quit();
 	}
 
-
+	@Test
+	public void pridejConverseDoKosikuFF() throws InterruptedException {
+		System.setProperty("webdriver.gecko.driver", "C:\\Users\\KDK\\Desktop\\Selenium Setup\\geckodriver.exe");
+		driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		driver.get("https://www.footshop.cz/cs/");
+		
+		objHomepage = new Homepage(driver);
+		objHomepage.clickPanske();
+		objPanskeBoty = new PanskeBoty(driver);
+		objPanskeBoty.chooseConverse();
+		objPanskeBoty.chooseBoots();
+		objExactBoty = new ExactBoty(driver);
+		String nameShoe = objExactBoty.jmenoBoty();
+		objExactBoty.velikostBoty();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		objExactBoty.pridatDoKosiku();
+		String nameBasket = objExactBoty.jmenoBotyKosik();
+		assertEquals(nameShoe, nameBasket);
+		driver.quit();
+	
+	
+	}
 
 }
 

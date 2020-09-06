@@ -17,7 +17,7 @@ WebElement dropdown;
 @FindBy(xpath="//*[@id=\"template\"]/div[5]/div/div[1]/div[2]/div[4]/div[1]/div[2]/div[2]/div[2]/div/span[2]")
 WebElement velikostBot;
 
-@FindBy(css="#template > div:nth-child(10) > div > div.Product_slidesAndInfo_2fGGB > div.ProductProperties_wrapper_1uSY9 > div.ProductProperties_buttonsContainer_9_f3e > button")
+@FindBy(css=".ProductProperties_addToCart_32JsZ")
 WebElement pridatdoKosiku;
 	
 @FindBy(className="ProductItem_name_2ZYz5")
@@ -44,8 +44,9 @@ public void velikostBoty() {
 	}
 
 
-public void pridatDoKosiku() {
-	driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+public void pridatDoKosiku() throws InterruptedException {
+	//driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	Thread.sleep(2500);
 	pridatdoKosiku.click();
 	}
 
