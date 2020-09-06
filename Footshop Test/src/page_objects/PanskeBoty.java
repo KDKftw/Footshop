@@ -2,6 +2,7 @@ package page_objects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.JavascriptExecutor;
 
 public class PanskeBoty {
@@ -14,6 +15,10 @@ WebElement converseCheckbox;
 @FindBy(css="#page-1 > div:nth-child(4) > div.Product_wrapper_HOAyR.Product_light_BLc7O > a > div > div > img")
 WebElement boty;
 
+public PanskeBoty(WebDriver driver) {
+	this.driver = driver;
+	PageFactory.initElements(driver, this);
+}
 
 public void chooseConverse() {
 	JavascriptExecutor js = (JavascriptExecutor) driver;

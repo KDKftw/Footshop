@@ -1,6 +1,8 @@
 package page_objects;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class ExactBoty {
 
@@ -19,10 +21,18 @@ WebElement pridatdoKosiku;
 @FindBy(xpath="//*[@id=\\\"ultranav\\\"]/div[3]/div[2]/div[1]/a/strong")
 WebElement nazevBotyKosik;
 
-public void jmenoBoty() {
+WebDriver driver;
+
+public ExactBoty(WebDriver driver) {
+	this.driver = driver;
+	PageFactory.initElements(driver, this);
+}
+
+public String jmenoBoty() {
 	String nameBoty = nazevBoty.getText();
 	nameBoty = nameBoty.replaceAll("\n", " ").toUpperCase();
-			}	
+	return (nameBoty);		
+}	
 
 public void velikostBoty() {
 	dropdown.click();
@@ -34,9 +44,10 @@ public void pridatDoKosiku() {
 	pridatdoKosiku.click();
 	}
 
-public void jmenoBotyKosik() {
+public String jmenoBotyKosik() {
 	String nameBotyKosik = nazevBotyKosik.getText();
 	nameBotyKosik = nameBotyKosik.toUpperCase();
+	return(nameBotyKosik);
 	
 }
 
