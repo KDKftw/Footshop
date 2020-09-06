@@ -13,12 +13,13 @@ import utility.Log;
 
 public class Converse {
 
-	public static void main(String[] args) throws InterruptedException  {
+	public void shoesname() throws InterruptedException {
+		
 		BasicConfigurator.configure();
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\KDK\\Desktop\\Selenium Setup\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();	
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		WebDriverWait wait = new WebDriverWait(driver,10);
+		WebDriverWait wait = new WebDriverWait(driver,5);
 		
 		driver.get("https://www.footshop.cz/cs/");
 		Log.info("Footshop web was opened");
@@ -32,20 +33,22 @@ public class Converse {
 		Log.info("Converse shoes are displayed");
 		Thread.sleep(3000);
 		driver.findElement(By.cssSelector("#page-1 > div:nth-child(4) > div.Product_wrapper_HOAyR.Product_light_BLc7O > a > div > div > img")).click();
+		
 		WebElement boty = driver.findElement(By.className("ProductProperties_hasLogo_2b-0v"));
 		String nazev = boty.getText();
 		nazev = nazev.replaceAll("\n", " ");
+		nazev = nazev.toUpperCase();
+		
 		System.out.println(nazev);
 		driver.findElement(By.className("Dropdown_activeItem_LAVaT")).click();
 		driver.findElement(By.xpath("//*[@id=\"template\"]/div[5]/div/div[1]/div[2]/div[4]/div[1]/div[2]/div[2]/div[2]/div/span[2]")).click();
 		driver.findElement(By.xpath("//*[@id=\"template\"]/div[5]/div/div[1]/div[2]/div[5]/button")).click();
+		Thread.sleep(2500);
 		
-		
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"ultranav\"]/div[3]/div[2]/div[1]/a/strong")));
 		WebElement shoesname = driver.findElement(By.xpath("//*[@id=\"ultranav\"]/div[3]/div[2]/div[1]/a/strong"));
 		String botaname = shoesname.getText();
-		System.out.println(botaname);
+		botaname = botaname.toUpperCase();
+		assertEquals(botaname, nazev);
 		
 		
 		
