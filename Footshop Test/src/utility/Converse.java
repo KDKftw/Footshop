@@ -34,11 +34,12 @@ public class Converse {
 		driver.findElement(By.cssSelector("#page-1 > div:nth-child(4) > div.Product_wrapper_HOAyR.Product_light_BLc7O > a > div > div > img")).click();
 		WebElement boty = driver.findElement(By.className("ProductProperties_hasLogo_2b-0v"));
 		String nazev = boty.getText();
+		nazev = nazev.replaceAll("\n", " ");
 		System.out.println(nazev);
 		driver.findElement(By.className("Dropdown_activeItem_LAVaT")).click();
 		driver.findElement(By.xpath("//*[@id=\"template\"]/div[5]/div/div[1]/div[2]/div[4]/div[1]/div[2]/div[2]/div[2]/div/span[2]")).click();
 		driver.findElement(By.xpath("//*[@id=\"template\"]/div[5]/div/div[1]/div[2]/div[5]/button")).click();
-		//Thread.sleep(2500);
+		
 		
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"ultranav\"]/div[3]/div[2]/div[1]/a/strong")));
@@ -46,8 +47,7 @@ public class Converse {
 		String botaname = shoesname.getText();
 		System.out.println(botaname);
 		
-		//String shoename = shoesname.getText();
-		//System.out.println(shoename);
+		
 		
 	}
 	
