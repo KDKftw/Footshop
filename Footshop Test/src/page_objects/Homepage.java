@@ -6,12 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utility.Log;
 
-
+//PAGE OBJECTS OF HOMEPAGE
 public class Homepage {
 
 	WebDriver driver;
 
-	@FindBy(className = "MainItem_main_2S6WB")
+	@FindBy(css = "#ultranav > div.Menu_wrapper_2lzmC > div > div > div > div:nth-child(2) > a")
 	WebElement panske;
 
 	public Homepage(WebDriver driver) {
@@ -19,10 +19,11 @@ public class Homepage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void clickPanske() {
+	public void clickPanske() throws InterruptedException {
 		driver.manage().window().maximize();
 		panske.click();
-		Log.info("Men shoes opened");
+		Log.info("Men accessories opened");
+		Thread.sleep(1500);
 	}
 
 }

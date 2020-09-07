@@ -4,14 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import utility.Log;
-
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.JavascriptExecutor;
 
-public class PanskeBoty {
+public class PanskeBoty { // PAGEOBJECTS FOR SEARCH PAGE
 
 	WebDriver driver;
 
@@ -23,14 +20,14 @@ public class PanskeBoty {
 
 	@FindBy(css = "#filter-manufacturer > div > div.SearchFilter_filter_1K-fG > input[type=text]")
 	WebElement searchBox;
-	
+
 	public PanskeBoty(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
 	public void chooseConverse() throws InterruptedException {
-		Thread.sleep(1500);
+		Thread.sleep(2500);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,500)", "");
 		searchBox.sendKeys("converse");

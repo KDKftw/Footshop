@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utility.Log;
 
-public class ExactBoty {			//DEFINING PAGEOBJECTS ON THE SPECIFIC SHOES PAGE
+public class ExactBoty { // DEFINING PAGEOBJECTS ON THE SPECIFIC SHOES PAGE
 
 	@FindBy(className = "ProductProperties_hasLogo_2b-0v")
 	WebElement nazevBoty;
@@ -32,9 +32,6 @@ public class ExactBoty {			//DEFINING PAGEOBJECTS ON THE SPECIFIC SHOES PAGE
 
 	@FindBy(xpath = "/html/body/div[4]/div[2]/div[3]/div[2]/div/div/button[1]")
 	WebElement minusKosik;
-
-	@FindBy(xpath = "/html/body/div[4]/div[2]/div[3]/div[2]/div/div/button[1]/svg/path")
-	WebElement quantity;
 
 	@FindBy(xpath = "className=ProductControls_control_1tVOu ProductControls_delete_1iSDL") //
 	WebElement odstranZkosikuFF;
@@ -61,14 +58,14 @@ public class ExactBoty {			//DEFINING PAGEOBJECTS ON THE SPECIFIC SHOES PAGE
 	}
 
 	public void pridatDoKosiku() throws InterruptedException {
-		// driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); 
+		// driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		Thread.sleep(2500);
 		pridatdoKosiku.click();
 		Log.info("Shoe was added to basket");
 	}
 
 	public String jmenoBotyKosik() throws InterruptedException {
-		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		String nameBotyKosik = nazevBotyKosik.getText();
 		Thread.sleep(1000);
 		nameBotyKosik = nameBotyKosik.toUpperCase();
@@ -98,7 +95,9 @@ public class ExactBoty {			//DEFINING PAGEOBJECTS ON THE SPECIFIC SHOES PAGE
 
 	}
 
-	public void odstranzKosikuFF() throws InterruptedException {
+	public void odstranzKosikuFF() throws InterruptedException { // created for firefox because it was not working as
+																	// intended (did not use this one in the end),
+																	// delete from basket
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		odstranZkosikuFF.click();
 

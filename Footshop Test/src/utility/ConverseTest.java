@@ -27,7 +27,7 @@ public class ConverseTest {
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(URL);
-		Log.info("TEST START - Chrome add to basket - Footshop web was opened-");
+		Log.info("TEST START - Chrome add to basket - Footshop web was opened");
 		objHomepage = new Homepage(driver);
 		objHomepage.clickPanske();
 		objPanskeBoty = new PanskeBoty(driver);
@@ -50,7 +50,7 @@ public class ConverseTest {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(URL);
-		Log.info("TEST START - Firefox add to basket -Footshop web was opened");
+		Log.info("TEST START - Firefox add to basket - Footshop web was opened");
 		objHomepage = new Homepage(driver);
 		objHomepage.clickPanske();
 		objPanskeBoty = new PanskeBoty(driver);
@@ -62,7 +62,7 @@ public class ConverseTest {
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		objExactBoty.pridatDoKosiku();
 		String nameBasket = objExactBoty.jmenoBotyKosik();
-		System.out.println(nameShoe + " =nameShoe");
+		System.out.println(nameShoe + " =nameShoe");	
 		System.out.println(nameBasket + " =nameBasket");
 		assertEquals(nameShoe, nameBasket);
 		Log.info("TEST DONE - Firefox add to basket");
@@ -72,7 +72,7 @@ public class ConverseTest {
 	@Test
 	public void odeberzKosiku() throws InterruptedException {
 
-		String infoPremade = ("Váš košík je prázdný");
+		String infoPremade = ("Váš košík je prázdný"); // define what shows whenever basket is empty
 		System.setProperty("webdriver.chrome.driver", driverPath);
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
@@ -110,7 +110,7 @@ public class ConverseTest {
 		objExactBoty.velikostBoty();
 		objExactBoty.pridatDoKosiku();
 		objExactBoty.minusKosik();
-		//objExactBoty.odstranzKosikuFF();
+		// objExactBoty.odstranzKosikuFF();
 		String info = objExactBoty.infoKosik();
 		assertEquals(info, infoPremade);
 		Log.info("TEST DONE - Firefox remove from basket");
