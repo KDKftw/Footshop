@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utility.Log;
 
-public class ExactBoty {
+public class ExactBoty {			//DEFINING PAGEOBJECTS ON THE SPECIFIC SHOES PAGE
 
 	@FindBy(className = "ProductProperties_hasLogo_2b-0v")
 	WebElement nazevBoty;
@@ -61,7 +61,7 @@ public class ExactBoty {
 	}
 
 	public void pridatDoKosiku() throws InterruptedException {
-		// driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		// driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); 
 		Thread.sleep(2500);
 		pridatdoKosiku.click();
 		Log.info("Shoe was added to basket");
