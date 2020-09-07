@@ -24,14 +24,20 @@ public class ExactBoty {
 	@FindBy(className = "ProductItem_name_2ZYz5")
 	WebElement nazevBotyKosik;
 
-	@FindBy(xpath = "//*[@id=\"ultranav\"]/div[3]/div[2]/div[1]/div/button[3]") // 
+	@FindBy(xpath = "//*[@id=\"ultranav\"]/div[3]/div[2]/div[1]/div/button[3]") //
 	WebElement odstranZkosiku;
 
 	@FindBy(css = "#ultranav > div.Cart_wrapper_3W-Wa.slideRight-enter-done > div.AsyncCart_products_Q5KWz > p")
 	WebElement infoKosik;
 
-	@FindBy(css = "html.wf-proximanova-n7-active.wf-proximanova-n4-active.wf-active body#template.lang_cs.promoStripeVisible div div#ultranav.Ultranav_ultranav_3-LWG div.Cart_wrapper_3W-Wa.slideRight-enter-done div.AsyncCart_products_Q5KWz div.ProductItem_product_1sWAp div.ProductControls_controls_5qP4l button.ProductControls_control_1tVOu svg path")
+	@FindBy(xpath = "/html/body/div[4]/div[2]/div[3]/div[2]/div/div/button[1]")
 	WebElement minusKosik;
+
+	@FindBy(xpath = "/html/body/div[4]/div[2]/div[3]/div[2]/div/div/button[1]/svg/path")
+	WebElement quantity;
+
+	@FindBy(xpath = "className=ProductControls_control_1tVOu ProductControls_delete_1iSDL") //
+	WebElement odstranZkosikuFF;
 
 	WebDriver driver;
 
@@ -61,9 +67,10 @@ public class ExactBoty {
 		Log.info("Shoe was added to basket");
 	}
 
-	public String jmenoBotyKosik() {
+	public String jmenoBotyKosik() throws InterruptedException {
 		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		String nameBotyKosik = nazevBotyKosik.getText();
+		Thread.sleep(1000);
 		nameBotyKosik = nameBotyKosik.toUpperCase();
 		Log.info("The name of shoes in basket is stored");
 		return (nameBotyKosik);
@@ -73,17 +80,27 @@ public class ExactBoty {
 	public void odstranZkosiku() {
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		odstranZkosiku.click();
+		Log.info("Item was deleted from basket");
 
 	}
 
 	public String infoKosik() {
 		String info = infoKosik.getText();
+		Log.info("The state of basket is stored");
 		return (info);
+
 	}
 
-	public void minusKosik() {
-		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+	public void minusKosik() throws InterruptedException {
+		Thread.sleep(2000);
 		minusKosik.click();
+		Log.info("Item was deleted from basket");
+
+	}
+
+	public void odstranzKosikuFF() throws InterruptedException {
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		odstranZkosikuFF.click();
 
 	}
 

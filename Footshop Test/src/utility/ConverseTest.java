@@ -13,7 +13,7 @@ import page_objects.PanskeBoty;
 
 public class ConverseTest {
 	String driverPath = "C:\\Users\\KDK\\Desktop\\Selenium Setup\\chromedriver.exe";
-	String driverPathFF = "C:\\\\Users\\\\KDK\\\\Desktop\\\\Selenium Setup\\\\geckodriver.exe";
+	String driverPathFF = "C:\\Users\\KDK\\Desktop\\Selenium Setup\\geckodriver.exe";
 	WebDriver driver;
 	Homepage objHomepage;
 	PanskeBoty objPanskeBoty;
@@ -27,7 +27,7 @@ public class ConverseTest {
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(URL);
-		Log.info("Footshop web was opened-");
+		Log.info("Footshop web was opened-Chrome add to basket");
 		objHomepage = new Homepage(driver);
 		objHomepage.clickPanske();
 		objPanskeBoty = new PanskeBoty(driver);
@@ -39,6 +39,7 @@ public class ConverseTest {
 		objExactBoty.pridatDoKosiku();
 		String nameBasket = objExactBoty.jmenoBotyKosik();
 		assertEquals(nameShoe, nameBasket);
+		Log.info("Chrome add to basket - TEST DONE");
 		driver.quit();
 	}
 
@@ -49,7 +50,7 @@ public class ConverseTest {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(URL);
-		Log.info("Footshop web was opened-Firefox pridej do kosiku");
+		Log.info("Footshop web was opened-Firefox add to basket");
 		objHomepage = new Homepage(driver);
 		objHomepage.clickPanske();
 		objPanskeBoty = new PanskeBoty(driver);
@@ -61,9 +62,10 @@ public class ConverseTest {
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		objExactBoty.pridatDoKosiku();
 		String nameBasket = objExactBoty.jmenoBotyKosik();
-		System.out.println(nameShoe + " nameShoe");
-		System.out.println(nameBasket + " nameBasket");
+		// System.out.println(nameShoe + " nameShoe");
+		// System.out.println(nameBasket + " nameBasket");
 		assertEquals(nameShoe, nameBasket);
+		Log.info("Firefox add to basket - TEST DONE");
 		driver.quit();
 	}
 
@@ -75,7 +77,7 @@ public class ConverseTest {
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(URL);
-		Log.info("Footshop web was opened-odeber z kosiku Chrome");
+		Log.info("Footshop web was opened-remove from basket Chrome");
 		objHomepage = new Homepage(driver);
 		objHomepage.clickPanske();
 		objPanskeBoty = new PanskeBoty(driver);
@@ -87,6 +89,7 @@ public class ConverseTest {
 		objExactBoty.odstranZkosiku();
 		String info = objExactBoty.infoKosik();
 		assertEquals(info, infoPremade);
+		Log.info("Chrome remove from basket - TEST DONE");
 		driver.quit();
 	}
 
@@ -97,7 +100,7 @@ public class ConverseTest {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(URL);
-		Log.info("Footshop web was opened-odeber z kosiku Firefox");
+		Log.info("Footshop web was opened-remove from basket Firefox");
 		objHomepage = new Homepage(driver);
 		objHomepage.clickPanske();
 		objPanskeBoty = new PanskeBoty(driver);
@@ -107,8 +110,10 @@ public class ConverseTest {
 		objExactBoty.velikostBoty();
 		objExactBoty.pridatDoKosiku();
 		objExactBoty.minusKosik();
+		//objExactBoty.odstranzKosikuFF();
 		String info = objExactBoty.infoKosik();
 		assertEquals(info, infoPremade);
+		Log.info("Firefox remove from basket - TEST DONE");
 		driver.quit();
 
 	}
