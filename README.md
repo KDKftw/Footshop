@@ -1,5 +1,4 @@
-# Footshop
-Footshop test
+
 This test script was created as a task for my application to Footshop. Task was to test adding converse shoes to basket, starting at the main page.
 
 I went through three pages total and I created file for each of them containing page objects (POM) that were found via Page Factory.
